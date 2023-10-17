@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F34899A2ADEE3A900645214 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3489992ADEE3A900645214 /* StyleButton.swift */; };
 		3FC4F0A52AD5A84600BB609C /* MemoryGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4F0A42AD5A84600BB609C /* MemoryGameApp.swift */; };
 		3FC4F0A72AD5A84600BB609C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4F0A62AD5A84600BB609C /* ContentView.swift */; };
 		3FC4F0A92AD5A84800BB609C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FC4F0A82AD5A84800BB609C /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F3489992ADEE3A900645214 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		3FC4F0A12AD5A84600BB609C /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FC4F0A42AD5A84600BB609C /* MemoryGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameApp.swift; sourceTree = "<group>"; };
 		3FC4F0A62AD5A84600BB609C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				3FC4F0A42AD5A84600BB609C /* MemoryGameApp.swift */,
 				3FC4F0A62AD5A84600BB609C /* ContentView.swift */,
+				3F3489992ADEE3A900645214 /* StyleButton.swift */,
 				3FC4F0CE2AD5A8A100BB609C /* CardView.swift */,
 				3FC4F0A82AD5A84800BB609C /* Assets.xcassets */,
 				3FC4F0AA2AD5A84800BB609C /* Preview Content */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FC4F0A72AD5A84600BB609C /* ContentView.swift in Sources */,
+				3F34899A2ADEE3A900645214 /* StyleButton.swift in Sources */,
 				3FC4F0CF2AD5A8A100BB609C /* CardView.swift in Sources */,
 				3FC4F0A52AD5A84600BB609C /* MemoryGameApp.swift in Sources */,
 			);
