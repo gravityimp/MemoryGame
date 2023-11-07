@@ -11,17 +11,21 @@ struct StyleButton: View {
     
     @Binding var icon: String
     @Binding var number: Int
+    @Binding var color: Color
+    @Binding var theme: Color
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: {
+            theme = color
+        }) {
             VStack {
                 Text(icon)
                 Text("Motyw "+String(number))
             }
-        }
+        }.disabled(theme == color)
     }
 }
 
 #Preview {
-    StyleButton(icon: .constant(""), number: .constant(1))
+    StyleButton(icon: .constant(""), number: .constant(1), color: .constant(Color.blue), theme: .constant(Color.blue))
 }
