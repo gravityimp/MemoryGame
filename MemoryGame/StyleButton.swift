@@ -9,23 +9,24 @@ import SwiftUI
 
 struct StyleButton: View {
     
-    @Binding var icon: String
-    @Binding var number: Int
-    @Binding var color: Color
-    @Binding var theme: Color
+    @ObservedObject var viewModel: MemoGameViewModel
+    
+    let symbol: String
+    let text: String
+    let action: () -> ()
+    let color: Color
     
     var body: some View {
-        Button(action: {
-            theme = color
-        }) {
-            VStack {
-                Text(icon)
-                Text("Motyw "+String(number))
-            }
-        }.disabled(theme == color)
+        VStack {
+            Text(symbol).font(.largeTitle)
+            Text(text)
+        }
+        .onTapGesture {
+            action()
+        }
     }
 }
 
 #Preview {
-    StyleButton(icon: .constant(""), number: .constant(1), color: .constant(Color.blue), theme: .constant(Color.blue))
+    StyleButton(viewModel: MemoGameViewModel(), symbol: "paperplane.circle", text: "Tekst", action: {}, color: .blue)
 }

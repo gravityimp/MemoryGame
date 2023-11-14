@@ -7,29 +7,48 @@
 
 import Foundation
 
-struct MemoGameModel<CardContent> {
+struct MemoGameModel<CardContent> where CardContent : Equatable {
     
-    init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->String) {
+    private(set) var cards: Array<Card>
+    
+    init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent) {
         
-        var cards: [Card] = []
+        self.cards = []
         
-        for i in 0..<numberOfPairsOfCards*2 {
-            cards.append(Card(content: cardContentFactory(i)))
-            cards.append(Card(content: cardContentFactory(i)))
+        reset(numberOfPairsOfCards: numberOfPairsOfCards, cardContentFactory: cardContentFactory)
+    }
+    
+    mutating func shuffle() {
+        self.cards.shuffle()
+    }
+    
+    mutating func reset(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent) {
+        self.cards = []
+        
+        for i in 0..<max(2, numberOfPairsOfCards) {
+            self.cards.append(Card(id: "\(i)_a", content: cardContentFactory(i)))
+            self.cards.append(Card(id: "\(i)_b", content: cardContentFactory(i)))
         }
     }
     
-    func selectCard(card: Card) {
-            
+    mutating func setTheme(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent) {
+        reset(numberOfPairsOfCards: numberOfPairsOfCards, cardContentFactory: cardContentFactory)
+        shuffle()
     }
     
-    struct Card {
-        var isFlipped = false
-        var isMatching = false
-        var content = ""
-        
-        init(content: String) {
-            self.content = content
+    mutating func selectCard(card: Card) {
+        for i in cards.indices {
+            if (cards[i].id == card.id) {
+                self.cards[i].isFlipped.toggle()
+                break;
+            }
         }
+    }
+    	
+    struct Card : Equatable, Identifiable {
+        var id: String
+        var isFlipped: Bool = false
+        var isMatching: Bool = false
+        var content: CardContent
     }
 }
