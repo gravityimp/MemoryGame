@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F03DBE62B1646E500F55136 /* CirclePart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03DBE52B1646E500F55136 /* CirclePart.swift */; };
 		3F30E7A42AFA8DD2000FEDDB /* MemoGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E7A32AFA8DD2000FEDDB /* MemoGameModel.swift */; };
 		3F30E7A62AFA9370000FEDDB /* MemoGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E7A52AFA9370000FEDDB /* MemoGameViewModel.swift */; };
 		3F34899A2ADEE3A900645214 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3489992ADEE3A900645214 /* StyleButton.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F03DBE52B1646E500F55136 /* CirclePart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePart.swift; sourceTree = "<group>"; };
 		3F30E7A32AFA8DD2000FEDDB /* MemoGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameModel.swift; sourceTree = "<group>"; };
 		3F30E7A52AFA9370000FEDDB /* MemoGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameViewModel.swift; sourceTree = "<group>"; };
 		3F3489992ADEE3A900645214 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				3FC4F0CE2AD5A8A100BB609C /* CardView.swift */,
 				3FC4F0A82AD5A84800BB609C /* Assets.xcassets */,
 				3FC4F0AA2AD5A84800BB609C /* Preview Content */,
+				3F03DBE52B1646E500F55136 /* CirclePart.swift */,
 			);
 			path = MemoryGame;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				3F30E7A42AFA8DD2000FEDDB /* MemoGameModel.swift in Sources */,
 				3FC4F0A72AD5A84600BB609C /* ContentView.swift in Sources */,
+				3F03DBE62B1646E500F55136 /* CirclePart.swift in Sources */,
 				3F30E7A62AFA9370000FEDDB /* MemoGameViewModel.swift in Sources */,
 				3F34899A2ADEE3A900645214 /* StyleButton.swift in Sources */,
 				3FC4F0CF2AD5A8A100BB609C /* CardView.swift in Sources */,

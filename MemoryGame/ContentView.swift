@@ -9,30 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     
-//    @State var emojis: [String] = ["😀", "😍", "🥱", "😱", "😂", "😡", "👻", "🤡"]
-//    @State var cards: [String] = ["😀", "😀", "😍", "😍"]
-    
-//    @State var cardColorTheme = Color.blue
-    
     @ObservedObject var viewModel: MemoGameViewModel
     
     var styles: some View {
         return HStack {
             StyleButton(viewModel: viewModel, symbol: "😂", text: "Blue", action: {
                 viewModel.setTheme(numberOfPairsOfCards: 8, themeId: 0)
-                viewModel.shuffle()
                 viewModel.cardColorTheme = .blue
             }, color: .blue).foregroundColor(viewModel.cardColorTheme)
             Spacer()
             StyleButton(viewModel: viewModel, symbol: "🐔", text: "Green", action: {
-                viewModel.setTheme(numberOfPairsOfCards: 8, themeId: 1)
-                viewModel.shuffle()
+                viewModel.setTheme(numberOfPairsOfCards: 6, themeId: 1)
                 viewModel.cardColorTheme = .green
             }, color: .red).foregroundColor(viewModel.cardColorTheme)
             Spacer()
             StyleButton(viewModel: viewModel, symbol: "❤️‍🔥", text: "Red", action: {
-                viewModel.setTheme(numberOfPairsOfCards: 8, themeId: 2)
-                viewModel.shuffle()
+                viewModel.setTheme(numberOfPairsOfCards: 4, themeId: 2)
                 viewModel.cardColorTheme = .red
             }, color: .green).foregroundColor(viewModel.cardColorTheme)
         }
@@ -71,37 +63,6 @@ struct ContentView: View {
         }
         .padding()
     }
-    
-    
-//    func adjustCardNumber(by offset: Int, symbol: String) -> some View {
-//        var card = CardView(value:.constant(symbol), theme: $cardColorTheme)
-//        cards.insert(symbol, at: offset)
-//        return card
-//    }
-    
-//    func handleAddCard() {
-//        let choice: [String] = emojis.filter { !cards.contains($0) }
-//        if (choice.isEmpty) {
-//            return
-//        }
-//        
-//        var newSymbol: String = choice.randomElement()!
-//        var c1 = adjustCardNumber(by: cards.count, symbol: newSymbol)
-//        var c2 = adjustCardNumber(by: cards.count, symbol: newSymbol)
-//    }
-//    
-//    func handleRemoveCard() {
-//        let symbol = cards.last
-//        if (cards.isEmpty) {
-//            return
-//        }
-//
-//        for i in stride(from: cards.count - 1, to: 0, by: -1) {
-//            if cards[i] == symbol {
-//                cards.remove(at: i)
-//            }
-//        }
-//    }
 }
 
 #Preview {

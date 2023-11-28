@@ -11,15 +11,37 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     
     private(set) var cards: Array<Card>
     
+    public var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var openCards: Array<Int> = cards.indices.filter{ index in cards[index].isFlipped }
+            return openCards.count == 1 ? openCards.first : nil
+        }
+        
+        set {
+            return cards.indices.forEach {
+                cards[$0].isFlipped = (newValue == $0)
+            }
+        }
+    }
+    
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent) {
         
         self.cards = []
         
         reset(numberOfPairsOfCards: numberOfPairsOfCards, cardContentFactory: cardContentFactory)
+        
+        shuffle()
     }
     
     mutating func shuffle() {
-        self.cards.shuffle()
+        self.cards.shuffle()	
+    }
+    
+    mutating func reset() {
+        for i in 0..<self.cards.count {
+            self.cards[i].isFlipped = false
+            self.cards[i].isMatching = false
+        }
     }
     
     mutating func reset(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent) {
@@ -37,10 +59,17 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     }
     
     mutating func selectCard(card: Card) {
-        for i in cards.indices {
-            if (cards[i].id == card.id) {
-                self.cards[i].isFlipped.toggle()
-                break;
+        if let index = cards.firstIndex(where: { $0.id == card.id }) {
+            if (!cards[index].isFlipped && !cards[index].isMatching) {
+                if let matchIndex = indexOfOneAndOnlyFaceUpCard {
+                    if (cards[index].content == cards[matchIndex].content) {
+                        cards[index].isMatching = true
+                        cards[matchIndex].isMatching = true
+                    }
+                } else {
+                    indexOfOneAndOnlyFaceUpCard = index
+                }
+                cards[index].isFlipped = true
             }
         }
     }

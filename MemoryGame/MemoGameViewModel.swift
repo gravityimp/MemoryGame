@@ -36,6 +36,7 @@ class MemoGameViewModel: ObservableObject {
     }
     
     func shuffle() {
+        model.reset()
         model.shuffle()
     }
     
