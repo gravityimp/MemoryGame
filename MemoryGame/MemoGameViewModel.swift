@@ -35,6 +35,10 @@ class MemoGameViewModel: ObservableObject {
         return model.cards
     }
     
+    var score: Int {
+        return model.score
+    }
+    
     func shuffle() {
         model.reset()
         model.shuffle()

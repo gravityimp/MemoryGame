@@ -10,6 +10,7 @@ import Foundation
 struct MemoGameModel<CardContent> where CardContent : Equatable {
     
     private(set) var cards: Array<Card>
+    public var score: Int = 0
     
     public var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
@@ -34,7 +35,8 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     }
     
     mutating func shuffle() {
-        self.cards.shuffle()	
+        self.cards.shuffle()
+        self.score = 0
     }
     
     mutating func reset() {
@@ -65,6 +67,14 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
                     if (cards[index].content == cards[matchIndex].content) {
                         cards[index].isMatching = true
                         cards[matchIndex].isMatching = true
+                        var points: Int = 4
+                        if cards[index].hasBeenSeen {
+                            points -= 2
+                        }
+                        if cards[matchIndex].hasBeenSeen {
+                            points -= 2
+                        }
+                        score += points
                     }
                 } else {
                     indexOfOneAndOnlyFaceUpCard = index
@@ -76,7 +86,14 @@ struct MemoGameModel<CardContent> where CardContent : Equatable {
     	
     struct Card : Equatable, Identifiable {
         var id: String
-        var isFlipped: Bool = false
+        var hasBeenSeen: Bool = false
+        var isFlipped: Bool = false {
+            didSet {
+                if oldValue && !isFlipped {
+                    hasBeenSeen = true
+                }
+            }
+        }
         var isMatching: Bool = false
         var content: CardContent
     }

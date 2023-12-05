@@ -18,8 +18,8 @@ struct CirclePart: Shape {
         let center = CGPoint(x: rect.width / 2, y: rect.height / 2)
         let radius = min(rect.width, rect.height) / 2
         let start = CGPoint(
-            x: center.x + radius * CGFloat(cos(startAngle.radians)),
-            y: center.y + radius * CGFloat(sin(startAngle.radians))
+            x: center.x + radius * CGFloat(cos(angleStart.radians)),
+            y: center.y + radius * CGFloat(sin(angleStart.radians))
         )
         
         var circlePath: Path = Path()
@@ -30,14 +30,10 @@ struct CirclePart: Shape {
             center: center, 
             radius: radius, 
             startAngle: angleStart, 
-            endAngle: angleEnd, 
+            endAngle: Angle(degrees: angleEnd.degrees-90),
             clockwise: false
         )
         circlePath.addLine(to: center)
         return circlePath
     }
-}
-
-#Preview {
-    CirclePart(angleEnd: Angle(degrees: 180.0))
 }

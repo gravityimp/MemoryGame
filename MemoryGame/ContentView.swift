@@ -52,6 +52,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Memo").font(.largeTitle).foregroundColor(viewModel.cardColorTheme)
+            Text("Score: \(viewModel.score)")
             ScrollView {
                 cards.animation(.default, value: viewModel.cards)
             }

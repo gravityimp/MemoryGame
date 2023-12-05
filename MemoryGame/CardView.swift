@@ -16,18 +16,14 @@ struct CardView: View {
     }
     
     var body: some View {
-        ZStack{
-            let base = RoundedRectangle(cornerRadius: 12)
-            Group{
-                base.fill(.white)
-                base.strokeBorder(lineWidth: 2)
-                CircleShape(endAngle: Angle(degrees: 110))
+            CirclePart(angleEnd: Angle(degrees: 110)).overlay(content: {
                 Text(card.content).font(.system(size: 200))
-                    .minimumScaleFactor(0.01)
-                    .aspectRatio(1, contentMode: .fit)
-            }.opacity(card.isFlipped ? 1 : 0)
-            base.fill().opacity(card.isFlipped ? 0 : 1)
-        }.opacity(card.isMatching ? 0 : 1)
+                        .minimumScaleFactor(0.01)
+                        .aspectRatio(1, contentMode: .fit)
+                        .rotationEffect(Angle(degrees: card.isMatching ? 360 : 0))
+                        .animation(Animation.linear(duration: 2).repeatForever(autoreverses: false))
+            })
+            .transformIntoCard(isFlipped: card.isFlipped).opacity(card.isMatching ? 0 : 1)
     }
 }
 
