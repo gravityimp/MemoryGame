@@ -21,6 +21,7 @@ struct CardView: View {
             Group{
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
+                CircleShape(endAngle: Angle(degrees: 110))
                 Text(card.content).font(.system(size: 200))
                     .minimumScaleFactor(0.01)
                     .aspectRatio(1, contentMode: .fit)
